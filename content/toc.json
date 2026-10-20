@@ -52,7 +52,13 @@
    "id": "lm-net",
    "cert": "lm",
    "subject": 2,
-   "title": "네트워크 기초와 명령"
+   "title": "네트워크 이론 (OSI·IP·프로토콜)"
+  },
+  {
+   "id": "lm-netcmd",
+   "cert": "lm",
+   "subject": 2,
+   "title": "네트워크 명령과 설정 파일"
   },
   {
    "id": "lm-svc",

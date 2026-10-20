@@ -16,6 +16,11 @@ const chapterMap = existsSync(join(root, 'content', 'chapter-map.json'))
   ? JSON.parse(readFileSync(join(root, 'content', 'chapter-map.json'), 'utf8'))
   : {}
 
+// own explanations: content/expl/*.json, keys are full question ids (EXAMID#n)
+const expl = {}
+const ed = join(root, 'content', 'expl')
+if (existsSync(ed)) for (const f of readdirSync(ed).filter((x) => x.endsWith('.json'))) Object.assign(expl, JSON.parse(readFileSync(join(ed, f), 'utf8')))
+
 const index = {}
 for (const cert of ['lm', 'nw']) {
   const dir = join(root, 'data', cert)
@@ -24,8 +29,6 @@ for (const cert of ['lm', 'nw']) {
   for (const f of readdirSync(dir).filter((x) => x.endsWith('.json')).sort()) {
     const d = JSON.parse(readFileSync(join(dir, f), 'utf8'))
     subjects = d.subjects
-    const explFile = join(root, 'content', 'expl', `${d.id}.json`)
-    const expl = existsSync(explFile) ? JSON.parse(readFileSync(explFile, 'utf8')) : {}
     const q = d.q.map((x) => {
       const id = `${d.id}#${x.n}`
       const r = { n: x.n, s: x.s, t: x.t }
@@ -34,13 +37,22 @@ for (const cert of ['lm', 'nw']) {
       r.o = x.o
       r.a = x.a
       if (x.ok) r.ok = x.ok
-      if (expl[x.n]) r.e = expl[x.n]
+      if (expl[id]) r.e = expl[id]
       if (chapterMap[id]) r.c = chapterMap[id]
       r.g = hash(norm(x.t) + '|' + [...x.o].map(norm).sort().join('|'))
       return r
     })
     exams.push({ id: d.id, date: d.date, count: d.count, q })
   }
+  // same question in several exams: reuse an explanation when the correct answer text is identical
+  const byGroup = {}
+  for (const e of exams) for (const x of e.q) if (x.g && x.e) (byGroup[x.g] ??= []).push(x)
+  for (const e of exams)
+    for (const x of e.q)
+      if (x.g && !x.e) {
+        const src = (byGroup[x.g] ?? []).find((y) => y.o[y.a - 1].trim() === x.o[x.a - 1].trim())
+        if (src) x.e = src.e
+      }
   // keep group tag only where the same question appears more than once
   const cnt = {}
   for (const e of exams) for (const x of e.q) cnt[x.g] = (cnt[x.g] || 0) + 1
