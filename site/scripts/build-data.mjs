@@ -39,7 +39,7 @@ for (const cert of ['lm', 'nw']) {
       if (x.ok) r.ok = x.ok
       if (expl[id]) r.e = expl[id]
       if (chapterMap[id]) r.c = chapterMap[id]
-      r.g = hash(norm(x.t) + '|' + [...x.o].map(norm).sort().join('|'))
+      r.g = hash(norm(x.t) + '|' + norm(x.box) + '|' + norm(x.fig) + '|' + [...x.o].map(norm).sort().join('|'))
       return r
     })
     exams.push({ id: d.id, date: d.date, count: d.count, q })

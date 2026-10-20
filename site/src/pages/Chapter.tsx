@@ -4,6 +4,18 @@ import { marked } from 'marked'
 import { db } from '../lib/db'
 import { useToc } from '../lib/toc'
 
+// CommonMark does not close ** next to punctuation and Korean letters, so bold is converted before parsing.
+function fixBold(md: string): string {
+  const keep: string[] = []
+  const hidden = md.replace(/```[\s\S]*?```|`[^`\n]*`/g, (m) => {
+    keep.push(m)
+    return `\u0000${keep.length - 1}\u0000`
+  })
+  return hidden
+    .replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\u0000(\d+)\u0000/g, (_, i) => keep[Number(i)])
+}
+
 export default function Chapter() {
   const { chapter = '' } = useParams()
   const toc = useToc()
@@ -15,7 +27,7 @@ export default function Chapter() {
     fetch(`${import.meta.env.BASE_URL}content/${chapter}.md`)
       .then((r) => (r.ok ? r.text() : Promise.reject()))
       .then((t) => {
-        setHtml(marked.parse(t, { async: false }) as string)
+        setHtml(marked.parse(fixBold(t), { async: false }) as string)
         db.reads.put({ chapter, at: Date.now() })
       })
       .catch(() => setMissing(true))

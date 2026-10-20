@@ -12,7 +12,7 @@ for f in sorted(glob.glob("data/*/*.json")):
 bad = [k for k in expl if k not in qs]
 print("unknown ids:", bad)
 # group coverage: a question counts as covered if any identical question has an explanation
-def key(q): return q["t"].strip() + "|" + "|".join(sorted(x.strip() for x in q["o"]))
+def key(q): return q["t"].strip() + "|" + (q.get("box") or "").strip() + "|" + (q.get("fig") or "").strip() + "|" + "|".join(sorted(x.strip() for x in q["o"]))
 covered_keys = {key(qs[k]) for k in expl if k in qs}
 tot, cov = {}, {}
 for qid, q in qs.items():

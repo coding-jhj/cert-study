@@ -1,0 +1,12 @@
+{
+"NW-20241103#17": "/etc/hosts입니다. DNS 서버가 없는 환경에서 이 파일에 주소와 이름을 적어 로컬 DNS처럼 씁니다.\n- /etc/deny, /etc/allow: 이름 해석용 파일이 아닙니다.\n- /etc/services: 서비스와 포트 번호 대응표입니다.",
+"NW-20250223#21": "CSMA/CD입니다. 버스 구조에서 채널이 사용 중인지 검사한 뒤 전송하고 충돌이 나면 폐기하고 일정 시간 대기 후 재전송합니다.\n- Token Ring, Token Bus, Slotted Ring: 토큰이나 슬롯으로 순서를 정해 충돌 없이 전송합니다.",
+"NW-20250824#17": "SNTP(Simple Network Time Protocol)입니다. 장비의 시간 동기화에 쓰고 포트 123을 씁니다.\n- SNMP: 네트워크 관리용입니다.\n- SMTP: 메일 송신용입니다.\n- HTTP: 웹용입니다.",
+"NW-20250824#29": "ls -al > output.txt입니다. >는 결과를 파일에 쓰고 이미 있으면 덮어씁니다.\n- ls -al < output.txt: <는 입력 방향입니다.\n- ls -al << output.txt: <<는 here document입니다.\n- ls -al >> output.txt: 추가(append)합니다.",
+"NW-20251102#46": "RAID 0입니다. 2개 이상의 디스크에 데이터를 나눠 동시에 저장하는 스트라이핑 방식으로 속도가 가장 빠릅니다.\n- Linear RAID: 디스크를 이어 붙입니다.\n- RAID 1: 미러링입니다.\n- RAID 5: 패리티를 분산 저장합니다.",
+"NW-20260201#1": "/etc/hosts입니다. DNS 서버가 없는 환경에서 이 파일에 주소와 이름을 적어 로컬 DNS처럼 씁니다.\n- /etc/deny, /etc/allow: 이름 해석용 파일이 아닙니다.\n- /etc/services: 서비스와 포트 번호 대응표입니다.",
+"NW-20260201#20": "데이터 링크 계층(Data Link Layer)입니다. 인접한 두 노드 사이에서 프레이밍, 주소 지정, 오류 검출(FCS/CRC), 흐름 제어를 담당하고 이더넷, HDLC, PPP가 대표 프로토콜입니다.\n- 물리적 계층: 비트 전송입니다.\n- 네트워크 계층: 경로 선택입니다.\n- 트랜스포트 계층: 종단 간 전송입니다.",
+"NW-20260517#23": "Optical Fiber Cable입니다. 10GBASE-SR이나 10GBASE-LRM은 광섬유 규격이어서 구리 기반 Gigabit Ethernet을 광섬유로 바꿔야 합니다.\n- U/UTP CAT.3: 저속 구리 케이블입니다.\n- Thin Coaxial Cable: 얇은 동축 케이블입니다.\n- U/FTP CAT.5: 구리 꼬임쌍선입니다.",
+"NW-20260517#24": "Wireless mesh networks입니다. 기지국 기반에서 애드혹으로 바뀌어 각 장치가 다른 장치의 트래픽을 릴레이·라우팅하며 군사 기술에서 출발했습니다.\n- Wireless sensor networks: 센서 노드로 구성한 네트워크입니다.\n- Software defined networks: 소프트웨어로 제어하는 네트워크입니다.\n- Content delivery networks: 콘텐츠를 가까운 서버에서 전달합니다.",
+"NW-20260802#36": "트러스트(Trust)입니다. 도메인 또는 포리스트 사이에 신뢰할지를 나타내며 포리스트 안의 도메인 사이에는 양방향 전이 트러스트가 있습니다.\n- 사이트: 물리적 위치 기반 구성입니다.\n- OU: 도메인 안의 세부 단위입니다.\n- 도메인 컨트롤러: 인증 서버입니다."
+}

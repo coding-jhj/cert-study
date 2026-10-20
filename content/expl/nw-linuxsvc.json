@@ -1,0 +1,23 @@
+{
+"NW-20240519#28": "resolv.conf입니다. nameserver 주소를 기록하는 DNS 서버 주소 파일로 /etc/resolv.conf입니다.\n- networks, protocols, services: 각각 네트워크 이름, 프로토콜 번호, 서비스 포트 대응표이며 DNS 서버 주소 파일이 아닙니다.",
+"NW-20240519#31": "KeepAliveTimeout 80입니다. 접속 후 80초 동안 요청이 없으면 연결을 끊습니다.\n- Exec-timeout 80: 네트워크 장비 설정이며 httpd.conf 지시자가 아닙니다.\n- Listen 80: 서비스 포트를 지정합니다.\n- NameVirtualHost 80: 가상 호스트 지정에 쓰입니다.",
+"NW-20240519#40": "유효성 검사 시 오류가 발생하지 않는다는 설명이 틀린 것으로 처리되었습니다.\n- 외부에서 오는 query에 대한 IP 대역을 모두 허용한다: allow-query { any; }의 뜻입니다.\n- 53번 포트에 대해서 외부 접근을 허용한다: listen-on port 53 { any; }의 뜻입니다.\n- slave에서 zone파일이 동기화될 때 text 형태로 변환한다: masterfile-format text의 뜻입니다.",
+"NW-20240519#41": "일반 사용자 계정에서 Apache 웹서버를 실행할 때 실행 명령어 앞에 su를 추가한다는 설명이 틀립니다. Well-known 포트는 관리자 권한이 필요하다는 의미이지 su를 붙이라는 뜻이 아닙니다.\n- Well-known 포트로 실행하려면 관리자 권한이 필요하다: 맞습니다.\n- 포트를 변경할 때는 다른 서비스와 충돌하지 않는 번호를 써야 한다: 맞습니다.\n- Well-known 포트는 1부터 1023까지이다: 맞습니다.",
+"NW-20240519#44": "iptables -A INPUT -p tcp --dport 23 -j DROP입니다. 들어오는(INPUT) TCP 23번(Telnet) 패킷을 버립니다.\n- iptables -A OUTPUT ...: 나가는 패킷을 막습니다.\n- iptables -A INPUT -p udp --dport 23 ...: Telnet은 TCP를 씁니다.\n- iptables -A INPUT -p tcp --dport 21 ...: 21번은 FTP 제어 포트입니다.",
+"NW-20240825#36": "httpd.conf입니다. Apache의 주 설정 파일로 디렉터리 리스팅, 심볼릭 링크, SSI, CGI 실행 디렉터리 같은 보안 설정을 합니다.\n- httpd-default.conf, httpd-vhosts.conf, httpd-mpm.conf: 기본값, 가상 호스트, MPM 설정을 나눠 둔 보조 파일입니다.",
+"NW-20241103#38": "Listen입니다. httpd.conf에서 서비스 포트 번호를 지정합니다.\n- KeepAlive: 지속 연결 사용 여부입니다.\n- DocumentRoot: 웹 문서 루트 경로입니다.\n- StartServers: 시작할 서버 프로세스 수입니다.",
+"NW-20241103#42": "directory '/var/named'입니다. zone 파일이 있는 위치를 지정합니다.\n- listen-on port 53 { any; }: 수신 포트를 지정합니다.\n- dump-file: 캐시 덤프 파일 경로입니다.\n- allow-query: 질의를 허용할 대역을 지정합니다.",
+"NW-20250223#40": "LimitRequestBody입니다. POST 요청 본문이 일정 크기를 넘지 못하게 제한합니다.\n- KeepRequestSize, RestrictBodyRequest, PostRequestSize: 존재하지 않는 지시자입니다.",
+"NW-20250223#41": "SSH(Secure Shell)입니다. 22번 포트를 쓰며 FTP와 Telnet이 평문으로 전송하는 것을 보완하는 원격 접속 보안 프로토콜입니다.\n- SSL, TLS: 전송 계층 암호화 프로토콜입니다.\n- RDP: 윈도 원격 데스크톱 프로토콜입니다.",
+"NW-20250525#36": "Round Robin입니다. 여러 웹 서버가 있을 때 요청이 오면 교대로 서비스를 실행해 부하를 공평하게 나눕니다.\n- Heartbeat: 서버 상태를 서로 확인합니다.\n- Failover Cluster: 장애 시 다른 서버가 이어받습니다.\n- Non-Repudiation: 부인 방지입니다.",
+"NW-20250525#42": "방화벽에서 UDP의 53번 포트만 열면 된다는 설명이 틀립니다. DNS는 TCP와 UDP를 모두 쓰므로 TCP 53번도 열어야 합니다.\n- 방화벽 설정은 iptables로 한다: 맞습니다.\n- BIND 설치 여부는 rpm -qa | grep bind로 확인한다: 맞습니다.\n- named.conf 오류 검사는 named-checkconf이다: 맞습니다.",
+"NW-20250525#45": "Options FollowSymLinks Indexes입니다. Indexes가 디렉터리 내용을 목록으로 노출해 Directory Indexing 공격에 취약합니다.\n- ServerAdmin, DocumentRoot, ServerRoot: 관리자 메일, 문서 루트, 서버 루트 경로를 지정할 뿐 디렉터리 목록 노출과 무관합니다.",
+"NW-20250824#43": "Listen 8081입니다. httpd.conf의 Listen이 포트를 지정합니다.\n- Port 8081, Default Port 8081, Listening 8081: httpd.conf의 올바른 지시자가 아닙니다.",
+"NW-20250824#44": "21번입니다. FTP에서 사용자 인증과 명령 제어에 쓰는 포트입니다.\n- 20번: 데이터 전송 포트입니다.\n- 22번: SSH입니다.\n- 23번: Telnet입니다.",
+"NW-20250824#45": "Round Robin Method입니다. 같은 도메인으로 접속하면 서로 다른 IP 주소를 순차적으로 응답해 부하를 분산합니다.\n- Least Connection Method: 연결 수가 가장 적은 서버로 보냅니다.\n- IP Hash Method: 클라이언트 IP 해시로 서버를 정합니다.\n- Least Response Time Method: 응답이 가장 빠른 서버로 보냅니다.",
+"NW-20251102#34": "KeepAliveTimeout 80입니다. 접속 후 80초 동안 추가 요청이 없으면 연결을 끊습니다.\n- Timeout 80: 요청 처리 제한 시간입니다.\n- KeepAlive On: 지속 연결 사용 여부입니다.\n- MaxKeepAliveRequests 80: 한 연결당 최대 요청 수입니다.",
+"NW-20251102#35": "일반 사용자 계정에서 Apache 웹서버를 실행할 때 실행 명령어 앞에 su를 추가한다는 설명이 틀립니다. Well-known 포트는 관리자 권한이 필요하다는 의미입니다.\n- 관리자 권한이 필요하다, 충돌하지 않는 번호를 써야 한다, 1부터 1023까지이다: 맞는 설명입니다.",
+"NW-20251102#37": "ㄱ: 20, ㄴ: 21입니다. 20번 포트가 데이터 전송을, 21번 포트가 제어를 담당합니다.\n- ㄱ: 21, ㄴ: 1024 / ㄱ: 21, ㄴ: 20: 데이터와 제어 포트가 바뀌었습니다.\n- ㄱ: 20, ㄴ: 1024: 제어 포트는 21입니다.",
+"NW-20260201#30": "유효성 검사 시 오류가 발생하지 않는다는 설명이 틀린 것으로 처리되었습니다.\n- 외부에서 오는 query에 대한 IP 대역을 모두 허용한다: allow-query { any; }의 뜻입니다.\n- 53번 포트에 대해서 외부 접근을 허용한다: listen-on port 53 { any; }의 뜻입니다.\n- slave에서 zone파일이 동기화될 때 text 형태로 변환한다: masterfile-format text의 뜻입니다.",
+"NW-20260802#37": "Passive Mode입니다. 서버에서 포트 대역을 설정하고 임의로 지정한 데이터 포트 정보를 클라이언트에 보내면 클라이언트가 그 포트로 접속합니다.\n- Active Mode: 서버가 클라이언트로 데이터 연결을 시도합니다.\n- Privileges Mode, Proxy Mode: FTP의 전송 모드가 아닙니다."
+}
