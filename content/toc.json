@@ -1,0 +1,154 @@
+{
+ "chapters": [
+  {
+   "id": "lm-shell",
+   "cert": "lm",
+   "subject": 1,
+   "title": "셸과 환경 변수"
+  },
+  {
+   "id": "lm-perm",
+   "cert": "lm",
+   "subject": 1,
+   "title": "파일과 권한"
+  },
+  {
+   "id": "lm-disk",
+   "cert": "lm",
+   "subject": 1,
+   "title": "디스크·쿼터·LVM·RAID"
+  },
+  {
+   "id": "lm-proc",
+   "cert": "lm",
+   "subject": 1,
+   "title": "프로세스와 cron"
+  },
+  {
+   "id": "lm-pkg",
+   "cert": "lm",
+   "subject": 1,
+   "title": "패키지와 소스 설치"
+  },
+  {
+   "id": "lm-editor",
+   "cert": "lm",
+   "subject": 1,
+   "title": "에디터 (vi·nano·emacs)"
+  },
+  {
+   "id": "lm-print",
+   "cert": "lm",
+   "subject": 1,
+   "title": "프린터와 사운드"
+  },
+  {
+   "id": "lm-xwin",
+   "cert": "lm",
+   "subject": 2,
+   "title": "X 윈도와 데스크톱"
+  },
+  {
+   "id": "lm-net",
+   "cert": "lm",
+   "subject": 2,
+   "title": "네트워크 기초와 명령"
+  },
+  {
+   "id": "lm-svc",
+   "cert": "lm",
+   "subject": 2,
+   "title": "인터넷 서비스 (ssh·ftp·samba)"
+  },
+  {
+   "id": "lm-virt",
+   "cert": "lm",
+   "subject": 2,
+   "title": "가상화·클라우드·임베디드"
+  },
+  {
+   "id": "nw-ip",
+   "cert": "nw",
+   "subject": 1,
+   "title": "IP 주소와 서브넷"
+  },
+  {
+   "id": "nw-tcpudp",
+   "cert": "nw",
+   "subject": 1,
+   "title": "TCP·UDP·포트"
+  },
+  {
+   "id": "nw-proto",
+   "cert": "nw",
+   "subject": 1,
+   "title": "ICMP·ARP와 응용 프로토콜"
+  },
+  {
+   "id": "nw-ipv6",
+   "cert": "nw",
+   "subject": 1,
+   "title": "IPv6"
+  },
+  {
+   "id": "nw-osi",
+   "cert": "nw",
+   "subject": 2,
+   "title": "OSI 참조 모델과 데이터 전송"
+  },
+  {
+   "id": "nw-lan",
+   "cert": "nw",
+   "subject": 2,
+   "title": "LAN·토폴로지·이더넷"
+  },
+  {
+   "id": "nw-wireless",
+   "cert": "nw",
+   "subject": 2,
+   "title": "무선·모바일 통신"
+  },
+  {
+   "id": "nw-cloud",
+   "cert": "nw",
+   "subject": 2,
+   "title": "가상화·클라우드·SDN"
+  },
+  {
+   "id": "nw-win",
+   "cert": "nw",
+   "subject": 3,
+   "title": "Windows Server"
+  },
+  {
+   "id": "nw-linux",
+   "cert": "nw",
+   "subject": 3,
+   "title": "Linux 기본"
+  },
+  {
+   "id": "nw-linuxsvc",
+   "cert": "nw",
+   "subject": 3,
+   "title": "Linux 서비스 (DNS·웹·방화벽)"
+  },
+  {
+   "id": "nw-device",
+   "cert": "nw",
+   "subject": 4,
+   "title": "네트워크 장비와 VLAN"
+  },
+  {
+   "id": "nw-routing",
+   "cert": "nw",
+   "subject": 4,
+   "title": "라우팅 프로토콜"
+  },
+  {
+   "id": "nw-media",
+   "cert": "nw",
+   "subject": 4,
+   "title": "보안·전송 매체·저장 장치"
+  }
+ ]
+}

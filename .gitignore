@@ -1,0 +1,8 @@
+_src/
+node_modules/
+site/dist/
+site/public/data/
+site/public/content/
+site/node_modules/
+*.log
+.anchor/
