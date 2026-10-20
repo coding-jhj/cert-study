@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { marked } from 'marked'
 import { db } from '../lib/db'
+import { inlinedContent } from '../lib/offline'
 import { useToc } from '../lib/toc'
 
 // CommonMark does not close ** next to punctuation and Korean letters, so bold is converted before parsing.
@@ -24,8 +25,10 @@ export default function Chapter() {
   useEffect(() => {
     setHtml(null)
     setMissing(false)
-    fetch(`${import.meta.env.BASE_URL}content/${chapter}.md`)
-      .then((r) => (r.ok ? r.text() : Promise.reject()))
+    const local = inlinedContent(chapter)
+    ;(local !== undefined
+      ? Promise.resolve(local)
+      : fetch(`${import.meta.env.BASE_URL}content/${chapter}.md`).then((r) => (r.ok ? r.text() : Promise.reject())))
       .then((t) => {
         setHtml(marked.parse(fixBold(t), { async: false }) as string)
         db.reads.put({ chapter, at: Date.now() })

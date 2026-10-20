@@ -1,13 +1,16 @@
 import type { Cert, CertData, Question } from './types'
+import { inlinedData } from './offline'
 
 const cache: Partial<Record<Cert, Promise<{ data: CertData; questions: Question[] }>>> = {}
 
 export function loadCert(cert: Cert) {
-  cache[cert] ??= fetch(`${import.meta.env.BASE_URL}data/${cert}.json`)
-    .then((r) => {
-      if (!r.ok) throw new Error(`data load failed: ${cert}`)
-      return r.json() as Promise<CertData>
-    })
+  cache[cert] ??= (inlinedData(cert)
+    ? Promise.resolve(inlinedData(cert) as CertData)
+    : fetch(`${import.meta.env.BASE_URL}data/${cert}.json`).then((r) => {
+        if (!r.ok) throw new Error(`data load failed: ${cert}`)
+        return r.json() as Promise<CertData>
+      })
+  )
     .then((data) => ({
       data,
       questions: data.exams.flatMap((e) =>
