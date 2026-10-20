@@ -40,7 +40,24 @@ export function QuestionView({ q, picked, reveal, onPick, subjectName, dateLabel
           {isCorrect(q, picked) ? '정답입니다.' : `오답입니다. 정답은 ${'①②③④'[q.a - 1]}번입니다.`}
         </p>
       )}
-      {reveal && q.e && <div className="explain">{q.e}</div>}
+      {reveal && q.e && <Explain text={q.e} />}
+    </div>
+  )
+}
+
+function Explain({ text }: { text: string }) {
+  const [head, ...rest] = text.split('\n')
+  const items = rest.map((l) => l.replace(/^-\s*/, '')).filter(Boolean)
+  return (
+    <div className="explain">
+      <p className="ex-head">{head}</p>
+      {items.length > 0 && (
+        <ul>
+          {items.map((l, i) => (
+            <li key={i}>{l}</li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

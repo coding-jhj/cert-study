@@ -1,4 +1,5 @@
-import { HashRouter, NavLink, Route, Routes } from 'react-router-dom'
+import { HashRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { useToc } from './lib/toc'
 import { useTheme } from './lib/store'
 import Home from './pages/Home'
 import Study from './pages/Study'
@@ -24,11 +25,50 @@ const TABS = [
   { to: '/me', label: '내 기록', end: false, d: 'M4 20V10M10 20V4M16 20v-7M22 20H2' },
 ]
 
+function Side() {
+  const { pathname } = useLocation()
+  const toc = useToc()
+  const showChapters = pathname.startsWith('/study')
+  const groups = [
+    { cert: 'lm', title: '리눅스마스터' },
+    { cert: 'nw', title: '네트워크관리사' },
+  ]
+  return (
+    <aside className="side" aria-label="사이드 메뉴">
+      <div className="brand">자격증 공부</div>
+      {TABS.map((t) => (
+        <div key={t.to}>
+          <NavLink to={t.to} end={t.end || t.to === '/study'}>
+            {icon(t.d)}
+            {t.label}
+          </NavLink>
+          {t.to === '/study' &&
+            showChapters &&
+            groups.map((g) => (
+              <div key={g.cert}>
+                <div className="grp">{g.title}</div>
+                {(toc?.chapters ?? [])
+                  .filter((c) => c.cert === g.cert)
+                  .map((c) => (
+                    <NavLink key={c.id} className="ch" to={`/study/${c.id}`}>
+                      {c.title}
+                    </NavLink>
+                  ))}
+              </div>
+            ))}
+        </div>
+      ))}
+    </aside>
+  )
+}
+
 export default function App() {
   useTheme()
   return (
     <HashRouter>
       <div className="app">
+        <Side />
+        <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/study" element={<Study />} />
@@ -42,6 +82,7 @@ export default function App() {
           <Route path="/me" element={<Me />} />
           <Route path="*" element={<Home />} />
         </Routes>
+        </div>
         <nav className="tabs" aria-label="메뉴">
           {TABS.map((t) => (
             <NavLink key={t.to} to={t.to} end={t.end}>
